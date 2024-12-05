@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Application Form</title>
+</head>
+<body>
+    <div class="container">
+        <h4 class="center-align">Application Form</h4>
+        <form id="applicationForm">
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="first_name" name="firstName" type="text" class="validate" required>
+                    <label for="first_name">First Name</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="last_name" name="lastName" type="text" class="validate" required>
+                    <label for="last_name">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="phone" name="phone" type="tel" class="validate" required>
+                    <label for="phone">Phone</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="email" name="email" type="email" class="validate" required>
+                    <label for="email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="address" name="address" type="text" class="validate" required>
+                    <label for="address">Address</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6">
+                    <input id="city" name="city" type="text" class="validate" required>
+                    <label for="city">City</label>
+                </div>
+                <div class="input-field col s12 m6">
+                    <input id="postal_code" name="postalCode" type="text" class="validate" required>
+                    <label for="postal_code">Postal Code</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <label>Gender</label>
+                    <p>
+                        <label>
+                            <input name="gender" type="radio" value="Male" required />
+                            <span>Male</span>
+                        </label>
+                    </p>
+                    <p>
+                        <label>
+                            <input name="gender" type="radio" value="Female" required />
+                            <span>Female</span>
+                        </label>
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="dob" name="dob" type="date" class="validate" required>
+                    <label for="dob">Date of Birth</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <button type="submit" class="btn waves-effect waves-light">Submit</button>
+                    <button type="button" class="btn red" onclick="resetForm()">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => (data[key] = value));
+
+            const response = await fetch('http://localhost:4000/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data),
+            });
+
+            if (response.ok) {
+                alert('Form submitted successfully!');
+            } else {
+                alert('Error submitting form.');
+            }
+        });
+
+        function resetForm() {
+            document.getElementById('applicationForm').reset(); // Reset the form fields
+        }
+    </script>
+</body>
+</html>
