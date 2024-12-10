@@ -1,0 +1,58 @@
+.navbar-size {
+    width: 95%;
+    margin: 0 auto;
+}
+.user-image-size {
+    height: 56px;
+    margin: 4px 0;
+}
+.main-body {
+    background-color: #f4eced;
+    color: rgb(13, 13, 13);
+}
+.materialboxed-image {
+    margin: 0 auto;
+    height: 400px;
+}
+.click-me-button {
+    background-color: #195d08; 
+    margin-top: 50px; 
+    width: 200px; 
+    height: 60px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    border-radius: 8px; 
+    color: white; 
+    border: none; 
+    cursor: pointer; 
+    transition: transform 0.2s, background-color 0.2s; 
+}
+.click-me-button:hover {
+    background-color: #0f4402; 
+    transform: scale(1.05);
+}
+.card-text {
+    color:black;
+}
+.brochure-link {
+    color: rgb(255, 247, 247) !important; 
+    text-decoration: none; 
+    font-weight: bold; 
+    font-size: 30px;
+}
+
+.brochure-link:hover {
+    text-decoration: underline; 
+}
+nav {
+    background-color: black !important; 
+}
+
+.brochure-link {
+    color: white !important; 
+    text-decoration: none; 
+}
+
+.brochure-link:hover {
+    text-decoration: underline; 
+}
